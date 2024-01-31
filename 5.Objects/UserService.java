@@ -9,15 +9,15 @@ public class UserService {
         users.put(user.getUsername(), user);
     }
 
-    public Login authenticate(
+    public static Login authenticate(
             String username,
             String password)
     {
         User user = users.get(username);
-        if (password.equals(user.getPassword())) {
+        if (user!=null && password.equals(user.getPassword())) {
             return user;
         }
         // fail the program with a not found exception
-        throw new RuntimeException("User not found");
+        throw new RuntimeException("Credientials not found");
     }
 }
